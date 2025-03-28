@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300">
+  <defs>
+    <linearGradient id="extrema-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0066ff" />
+      <stop offset="100%" stop-color="#00ccff" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Grid background -->
+  <g stroke="#e0eaff" stroke-width="1">
+    <g id="grid-horizontal">
+      <line x1="0" y1="50" x2="400" y2="50" />
+      <line x1="0" y1="100" x2="400" y2="100" />
+      <line x1="0" y1="150" x2="400" y2="150" />
+      <line x1="0" y1="200" x2="400" y2="200" />
+      <line x1="0" y1="250" x2="400" y2="250" />
+    </g>
+    <g id="grid-vertical">
+      <line x1="50" y1="0" x2="50" y2="300" />
+      <line x1="100" y1="0" x2="100" y2="300" />
+      <line x1="150" y1="0" x2="150" y2="300" />
+      <line x1="200" y1="0" x2="200" y2="300" />
+      <line x1="250" y1="0" x2="250" y2="300" />
+      <line x1="300" y1="0" x2="300" y2="300" />
+      <line x1="350" y1="0" x2="350" y2="300" />
+    </g>
+  </g>
+  
+  <!-- Coordinate system -->
+  <g stroke="#333333" stroke-width="2">
+    <line x1="50" y1="150" x2="350" y2="150" /> <!-- x-axis -->
+    <line x1="200" y1="50" x2="200" y2="250" /> <!-- y-axis -->
+    
+    <!-- Axis arrows -->
+    <polygon points="350,150 340,145 340,155" fill="#333333" />
+    <polygon points="200,50 195,60 205,60" fill="#333333" />
+    
+    <!-- Axis labels -->
+    <text x="345" y="140" font-family="Arial" font-size="14" fill="#333333">x</text>
+    <text x="210" y="55" font-family="Arial" font-size="14" fill="#333333">y</text>
+  </g>
+  
+  <!-- Function with critical points -->
+  <path d="M 50,120 
+           C 70,180 100,220 150,200 
+           C 180,190 190,150 200,150 
+           C 210,150 220,190 250,200
+           C 300,220 330,180 350,120" 
+        stroke="#0066ff" stroke-width="3" fill="none" />
+  
+  <!-- Critical points -->
+  <g>
+    <!-- Local maximum -->
+    <circle cx="150" cy="200" r="6" fill="url(#extrema-gradient)" />
+    <text x="150" y="225" font-family="Arial" font-size="12" fill="#333333" text-anchor="middle">Local Max</text>
+    
+    <!-- Inflection point -->
+    <circle cx="200" cy="150" r="6" fill="url(#extrema-gradient)" />
+    <text x="200" y="135" font-family="Arial" font-size="12" fill="#333333" text-anchor="middle">Inflection</text>
+    
+    <!-- Local minimum -->
+    <circle cx="250" cy="200" r="6" fill="url(#extrema-gradient)" />
+    <text x="250" y="225" font-family="Arial" font-size="12" fill="#333333" text-anchor="middle">Local Min</text>
+  </g>
+  
+  <!-- Tangent lines at critical points -->
+  <g stroke="#ff6600" stroke-width="2" stroke-dasharray="5,3">
+    <!-- Horizontal tangent at maximum -->
+    <line x1="120" y1="200" x2="180" y2="200" />
+    
+    <!-- Horizontal tangent at minimum -->
+    <line x1="220" y1="200" x2="280" y2="200" />
+    
+    <!-- Diagonal tangent at inflection point -->
+    <line x1="180" y1="170" x2="220" y2="130" />
+  </g>
+  
+  <!-- First derivative -->
+  <g transform="translate(60, 80)">
+    <text font-family="Arial" font-size="14" fill="#0066ff">
+      <tspan x="0" dy="0">First Derivative Test:</tspan>
+      <tspan x="10" dy="20">f'(x) = 0 at critical points</tspan>
+    </text>
+  </g>
+  
+  <!-- Second derivative -->
+  <g transform="translate(250, 80)">
+    <text font-family="Arial" font-size="14" fill="#ff6600">
+      <tspan x="0" dy="0">Second Derivative Test:</tspan>
+      <tspan x="10" dy="20">f''(x) < 0: Maximum</tspan>
+      <tspan x="10" dy="20">f''(x) > 0: Minimum</tspan>
+      <tspan x="10" dy="20">f''(x) = 0: Inflection</tspan>
+    </text>
+  </g>
+  
+  <!-- Title -->
+  <text x="200" y="30" font-family="Arial" font-size="18" font-weight="bold" fill="url(#extrema-gradient)" text-anchor="middle">Extreme Values and Critical Points</text>
+</svg>

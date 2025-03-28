@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+
+{% block title %}Juegos Matemáticos Interactivos{% endblock %}
+
+{% block content %}
+<section class="games-header">
+    <div class="container text-center">
+        <h1>Juegos Matemáticos Interactivos</h1>
+        <p class="lead">Aprende conceptos de cálculo diferencial a través de juegos divertidos que ejecutan los juegos originales de Python.</p>
+    </div>
+</section>
+
+<section class="games-section">
+    <div class="container py-5">
+        <div class="row">
+            {% for game in games %}
+            <div class="col-md-6 mb-4">
+                <div class="card h-100 game-card">
+                    <div class="card-body text-center">
+                        <div class="game-icon mb-3">
+                            <i class="fas fa-gamepad fa-3x"></i>
+                        </div>
+                        <h3 class="card-title">{{ game.name }}</h3>
+                        <p class="card-text">{{ game.description }}</p>
+                        
+                        <div class="btn-group-vertical w-100">
+                            {% if game.id == 'calculus-challenge' %}
+                            <a href="https://v0-calabozo-de-derivadas.vercel.app" class="btn btn-primary btn-lg mt-3" target="_blank">
+                                <i class="fas fa-gamepad"></i> Jugar
+                            </a>
+                            {% elif game.id == 'graph-challenge' %}
+                            <a href="https://github.com/BernardoAcosta20025/ProyectoCalculoF.git" class="btn btn-primary btn-lg mt-3" target="_blank">
+                                <i class="fas fa-gamepad"></i> Jugar
+                            </a>
+                            {% else %}
+                            <a href="{{ url_for('run_game', game_id=game.id) }}" class="btn btn-primary btn-lg mt-3">
+                                <i class="fas fa-gamepad"></i> Jugar
+                            </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+            
+        <!-- Sección de juegos próximamente -->
+        <h3 class="text-center mb-4 mt-5">Próximamente más juegos...</h3>
+        <div class="games-placeholder">
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100 game-card placeholder">
+                        <div class="card-body text-center">
+                            <div class="placeholder-icon mb-3">
+                                <i class="fas fa-calculator fa-3x"></i>
+                            </div>
+                            <h3>Carrera de Derivadas</h3>
+                            <p>Este juego pondrá a prueba tu velocidad y precisión al calcular derivadas.</p>
+                            <button class="btn btn-outline-primary btn-lg mt-3" disabled>Próximamente</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100 game-card placeholder">
+                        <div class="card-body text-center">
+                            <div class="placeholder-icon mb-3">
+                                <i class="fas fa-rocket fa-3x"></i>
+                            </div>
+                            <h3>Desafío de Optimización</h3>
+                            <p>Usa el cálculo para optimizar varios escenarios y lograr los mejores resultados.</p>
+                            <button class="btn btn-outline-primary btn-lg mt-3" disabled>Próximamente</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .games-header {
+        background-color: #007bff;
+        color: white;
+        padding: 3rem 0;
+        margin-bottom: 2rem;
+    }
+    
+    .game-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+    
+    .game-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    
+    .game-icon {
+        color: #007bff;
+    }
+    
+    .placeholder-icon {
+        color: #6c757d;
+    }
+    
+    .game-card.placeholder {
+        opacity: 0.7;
+    }
+</style>
+{% endblock %} 

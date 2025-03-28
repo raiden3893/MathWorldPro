@@ -1,0 +1,132 @@
+{% extends "base.html" %}
+
+{% block title %}Exámenes de Práctica - Mundo Matemático{% endblock %}
+
+{% block extra_head %}
+<script src="{{ url_for('static', filename='js/exams.js') }}" defer></script>
+{% endblock %}
+
+{% block content %}
+<section class="exam-header">
+    <div class="container text-center">
+        <h1>Exámenes de Práctica</h1>
+        <p class="lead">Pon a prueba tus conocimientos de cálculo diferencial con nuestros exámenes interactivos.</p>
+    </div>
+</section>
+
+<section class="exam-selection">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-lg-8 mx-auto">
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="card-title">Selecciona un Examen</h2>
+                        <p class="card-text">Elige un tema específico o prueba un examen completo que cubra todas las áreas.</p>
+                        
+                        <div class="form-group mb-4">
+                            <label for="examType" class="form-label">Tipo de Examen:</label>
+                            <select id="examType" class="form-select">
+                                <option value="all">Todos los Temas (Completo)</option>
+                                <option value="intro">Introducción al Cálculo</option>
+                                <option value="derivatives">Derivadas y Reglas</option>
+                                <option value="factorization">Métodos de Factorización</option>
+                                <option value="graphs">Gráficas y Funciones</option>
+                                <option value="limits">Límites y Continuidad</option>
+                                <option value="extrema">Valores Extremos y Puntos Críticos</option>
+                                <option value="applications">Aplicaciones del Cálculo</option>
+                                <option value="mvt">Formas Indeterminadas y Teorema del Valor Medio</option>
+                            </select>
+                        </div>
+                        
+                        <div class="d-grid">
+                            <button id="startExamBtn" class="btn btn-primary btn-lg">Iniciar Examen</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="examContainer" class="exam-container d-none">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 mx-auto">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h3 id="examTitle">Examen de Cálculo Diferencial</h3>
+                        <div class="exam-progress">
+                            <span id="questionCounter">Pregunta 1 de 10</span>
+                            <div class="progress" style="width: 200px;">
+                                <div id="examProgressBar" class="progress-bar" role="progressbar" style="width: 10%;" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">10%</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div id="questionContainer">
+                            <h4 id="questionText" class="mb-4">Cargando pregunta...</h4>
+                            <div id="questionImage" class="text-center mb-4 d-none">
+                                <!-- La imagen de la pregunta se insertará aquí si es necesario -->
+                            </div>
+                            <div id="answerOptions" class="options-container">
+                                <!-- Las opciones se insertarán dinámicamente aquí -->
+                            </div>
+                        </div>
+                        
+                        <div id="answerFeedback" class="feedback-container mt-4 d-none">
+                            <div class="alert" role="alert">
+                                <h5 id="feedbackTitle"></h5>
+                                <p id="feedbackText"></p>
+                                <div id="explanationContainer" class="explanation-container">
+                                    <h6>Explicación:</h6>
+                                    <p id="explanationText"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="d-flex justify-content-between">
+                            <button id="prevQuestionBtn" class="btn btn-outline-primary" disabled>Anterior</button>
+                            <button id="nextQuestionBtn" class="btn btn-primary">Siguiente Pregunta</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="examResults" class="exam-results d-none">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 mx-auto">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Resultados del Examen</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="results-summary text-center mb-4">
+                            <h2 id="scoreDisplay">Tu Puntuación: <span id="scoreValue">0/0</span></h2>
+                            <div class="score-circle">
+                                <div id="scorePercentage" class="score-percentage">0%</div>
+                            </div>
+                            <p id="scoreMessage" class="mt-3">Calculando tus resultados...</p>
+                        </div>
+                        
+                        <h4>Revisión de Preguntas</h4>
+                        <div id="questionsReview" class="questions-review">
+                            <!-- Los elementos de revisión de preguntas se insertarán dinámicamente aquí -->
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="d-flex justify-content-center">
+                            <button id="retakeExamBtn" class="btn btn-primary me-3">Repetir Examen</button>
+                            <button id="chooseAnotherExamBtn" class="btn btn-outline-primary">Elegir Otro Examen</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,51 @@
+JUEGO DE CÁLCULO DIFERENCIAL - SOLUCIÓN DE PROBLEMAS
+===================================================
+
+Problemas identificados y sus soluciones:
+
+1. DEPENDENCIAS FALTANTES
+-------------------------
+Problema: El juego requiere pygame, numpy y matplotlib, que podrían no estar instalados.
+Solución: Se creó el archivo JUGAR_AQUI.py que verifica e instala las dependencias faltantes.
+
+2. MÚSICA DE FONDO
+-----------------
+Problema: El juego intentaba cargar un archivo de música no existente (background_music.mp3).
+Solución: Se modificó sound_manager.py para generar la música de fondo programáticamente.
+
+3. CARGA DE IMÁGENES SVG
+-----------------------
+Problema: El juego podía fallar al intentar cargar iconos SVG no existentes.
+Solución: Se añadió manejo de errores robusto para cargar iconos y crear fallbacks si fallan.
+
+4. CÁLCULO DE VICTORIAS PARA RECARGAR POTENCIADORES
+-------------------------------------------------
+Problema: Había un error en el cálculo de cuándo recargar los potenciadores.
+Solución: Se cambió la fórmula de (correct_answers // self.powerup_recharge) a 
+(correct_answers % self.powerup_recharge) para que funcione correctamente.
+
+5. CIERRE INESPERADO DEL JUEGO
+-----------------------------
+Problema: El juego se cerraba inesperadamente sin mostrar errores.
+Solución: Se añadió manejo de excepciones en todas las funciones críticas y
+se creó el launcher JUGAR_AQUI.py para diagnosticar y solucionar errores.
+
+6. MANEJO DE TECLA ESC
+---------------------
+Problema: No había forma de regresar al menú principal desde el juego.
+Solución: Se añadió soporte para la tecla ESC que permite regresar al menú desde
+cualquier parte del juego.
+
+CÓMO JUGAR:
+----------
+1. Ejecuta JUGAR_AQUI.py para iniciar el juego con todas las medidas de seguridad.
+2. Selecciona "Jugar" en el menú principal.
+3. Elige la puerta que muestra la gráfica que corresponde a la ecuación mostrada.
+4. Usa los potenciadores disponibles para mejorar tu puntuación.
+5. Presiona ESC en cualquier momento para volver al menú principal.
+
+Para desarrolladores:
+--------------------
+- Las modificaciones de depuración se mantuvieron en el código para facilitar
+  el diagnóstico en caso de futuros problemas.
+- Se recomienda usar Python 3.9+ para mejor compatibilidad. 
